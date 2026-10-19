@@ -1,14 +1,20 @@
 package br.edu.fatecfranca.api.models;
 
 public class Modulo {
+
     private String titulo;
     private String conteudo;
     private Integer cargaHoraria;
 
+    // Construtor genérico
     public Modulo() {
     }
 
-    public Modulo(String titulo, String conteudo, Integer cargaHoraria) {
+    // Construtor personalizado completo, com todos os atributos
+    public Modulo(
+            String titulo,
+            String conteudo,
+            Integer cargaHoraria) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.cargaHoraria = cargaHoraria;

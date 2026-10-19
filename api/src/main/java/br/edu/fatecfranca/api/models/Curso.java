@@ -13,17 +13,27 @@ public class Curso {
 
     @Id
     private String id;
+
     private String nome;
     private Integer cargaHoraria;
 
+    // Valor monetário: armazenado como Decimal128 no MongoDB
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal valor;
+
     private List<Modulo> modulos;
 
+    // Construtor genérico
     public Curso() {
     }
 
-    public Curso(String id, String nome, Integer cargaHoraria, BigDecimal valor, List<Modulo> modulos) {
+    // Construtor personalizado completo, com todos os atributos
+    public Curso(
+            String id,
+            String nome,
+            Integer cargaHoraria,
+            BigDecimal valor,
+            List<Modulo> modulos) {
         this.id = id;
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
