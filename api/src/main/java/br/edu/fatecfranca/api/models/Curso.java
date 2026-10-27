@@ -8,19 +8,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 @Document(collection = "cursos")
 public class Curso {
 
     @Id
     private String id;
 
+    @NotBlank(message = "O nome do curso é obrigatório.")
     private String nome;
+
+    @NotNull(message = "A carga horária é obrigatória.")
+    @Positive(message = "A carga horária deve ser maior que zero.")
     private Integer cargaHoraria;
 
     // Valor monetário: armazenado como Decimal128 no MongoDB
+    @NotNull(message = "O valor do curso é obrigatório.")
+    @Positive(message = "O valor do curso deve ser maior que zero.")
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal valor;
 
+    @NotEmpty(message = "O curso deve ter ao menos um módulo.")
+    @Valid
     private List<Modulo> modulos;
 
     // Construtor genérico
